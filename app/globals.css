@@ -1,0 +1,180 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-mid-rgb: 26, 26, 26;
+  --background-end-rgb: 0, 0, 0;
+  --gold: #ffd700;
+  --gold-light: #ffed4a;
+  --gold-dark: #b8860b;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --global-background: linear-gradient(
+    to bottom,
+    rgb(var(--background-start-rgb)) 0%,
+    rgb(var(--background-mid-rgb)) 50%,
+    rgb(var(--background-end-rgb)) 100%
+  );
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    color: var(--text-primary);
+    background: var(--global-background);
+    background-attachment: fixed;
+    font-family: "Space Grotesk", sans-serif;
+    min-height: 100vh;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--gold);
+    font-weight: bold;
+  }
+
+  a {
+    color: var(--gold);
+    transition: color 0.3s ease;
+  }
+
+  a:hover {
+    color: var(--gold-light);
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-block bg-golden-500 text-black font-bold py-2 px-6 rounded-md transition-all duration-300;
+  }
+
+  .btn:hover {
+    @apply bg-golden-400 text-black;
+  }
+
+  .card {
+    @apply bg-neutral-800/50 border border-golden-300/20 rounded-lg overflow-hidden shadow-lg transition-all duration-300;
+  }
+
+  .card:hover {
+    @apply border-golden-300/40 transform scale-[1.02];
+  }
+}
+
+.min-h-screen {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* Updated animation classes */
+.animate-in {
+  animation: fadeInUp 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-animate {
+  animation: fadeInRight 0.5s ease-in-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-in,
+  .card-animate {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Mobile menu styles - updated for right-aligned dropdown */
+.mobile-menu {
+  position: fixed;
+  top: 64px; /* Height of the header */
+  right: -300px; /* Start off-screen */
+  width: auto; /* Auto width based on content */
+  min-width: 200px; /* Minimum width */
+  max-width: 300px; /* Maximum width */
+  height: auto;
+  background-color: rgba(26, 26, 26, 0.95);
+  transition: right 0.3s ease-in-out;
+  z-index: 40;
+  border-left: 1px solid rgba(255, 215, 0, 0.1);
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  border-bottom-left-radius: 8px;
+}
+
+.mobile-menu.open {
+  right: 0;
+}
+
+.mobile-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.mobile-menu li {
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
+.mobile-menu a {
+  display: block;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  white-space: nowrap;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.mobile-menu a:hover {
+  background-color: rgba(255, 215, 0, 0.1);
+}
+
+/* Adjust the header for mobile */
+@media (max-width: 1279px) {
+  header .container {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  header .logo-text {
+    font-size: 1.5rem;
+  }
+}
+

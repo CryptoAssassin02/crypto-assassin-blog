@@ -1,0 +1,7 @@
+your-project/
+├─ app/ (or pages/)
+├─ public/
+│  └─ og-image.png
+├─ next.config.js
+└─ package.json
+
